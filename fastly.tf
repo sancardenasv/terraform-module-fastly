@@ -1,5 +1,6 @@
-resource "fastly_service_v1" "my-fastly-service" {
+resource "fastly_service_v1" "fastly-service" {
   name = var.fastly_service_name
+  activate = var.activate_service
 
   dynamic "domain" {
     for_each = var.domains

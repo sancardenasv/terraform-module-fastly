@@ -3,6 +3,12 @@ variable "fastly_service_name" {
   type = string
 }
 
+# If set true will activate latest update of the Fastly service; otherwise, will have to manually activate in front end.
+variable "activate_service" {
+  type = bool
+  default = true
+}
+
 # Domains to be routed
 variable "domains" {
   type    = list(string)
