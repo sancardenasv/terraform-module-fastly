@@ -1,8 +1,3 @@
-# This is the token to communicate with the Fastly API.
-variable "fastly_api_token" {
-  type = string
-}
-
 # This is a unique value for your service in the class.
 variable "fastly_service_name" {
   type = string

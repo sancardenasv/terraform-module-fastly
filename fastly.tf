@@ -1,7 +1,3 @@
-provider "fastly" {
-  api_key = var.fastly_api_token
-}
-
 resource "fastly_service_v1" "my-fastly-service" {
   name = var.fastly_service_name
 

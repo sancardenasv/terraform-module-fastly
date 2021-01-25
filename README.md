@@ -10,11 +10,16 @@ In this service, you can build:
 
 ### Usage
 Include the module inside your Terraform configuration with required and desired input variables.
+Also include the Fastly provider.
 ```
+# This is the token to communicate with the Fastly API.
+provider "fastly" {
+  api_key = var.fastly_api_token # This should not be public.
+}
+
 module "fastly" {
   source = "git@github.com:sancardenasv/terraform-module-fastly.git"
   
-  fastly_api_token      = var.fastly_api_token # This should not be public.
   fastly_service_name   = var.fastly_service_name # Unique name for the service in Fastly.
   domains               = var.domains # List of domains to access the service.
   force_ssl             = var.force_ssl # Turn HTTP request to HTTPS.
