@@ -8,6 +8,21 @@ In this service, you can build:
 - Route criteria.
 - Load balance.
 
+### Input
+- fastly_service_name `[String]`: A unique name for the service in Fastly.
+- activate_service `[Bool, Default = true]`: If set true will activate the latest update of the Fastly service;
+  otherwise, will have to manually activate in front end.
+- domains `[List(String)]`: List of domains to access the service.
+- force_ssl `[Bool, Default = false]`: Turn HTTP requests to HTTPS.
+- backend `[List(Object)]`: Servers where to find the requested resources. Check **Backend** section for more details.
+
+### Output
+- fastly_service_name: Display name of the service in Fastly.
+- service_id: Fastly service ID identifier.
+- service_version: Current active version of the service.
+- configured_domains: Set of configured domains in the Fastly service.
+- service_dashboard: Fastly URL to the created service dashboard.
+
 ### Usage
 Include the module inside your Terraform configuration with required and desired input variables.
 Also include the Fastly provider.
@@ -20,10 +35,11 @@ provider "fastly" {
 module "fastly" {
   source = "git@github.com:sancardenasv/terraform-module-fastly.git"
   
-  fastly_service_name   = var.fastly_service_name # Unique name for the service in Fastly.
-  domains               = var.domains # List of domains to access the service.
-  force_ssl             = var.force_ssl # Turn HTTP request to HTTPS.
-  backend               = var.backend # Servers where to find the requested resources.
+  fastly_service_name   = var.fastly_service_name
+  activate_service      = var.activate_service
+  domains               = var.domains
+  force_ssl             = var.force_ssl
+  backend               = var.backend
 }
 ```
 
